@@ -31,184 +31,136 @@ header p {
 
 .speaker-detail-popover {
   display: none;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
   position: relative;
   width: 100%;
-  background-color: transparent;
-  margin-bottom: -2.9rem;
-  z-index: 10;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  z-index: 1000;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.3s ease;
 }
 .speaker-detail-popover.visible {
   display: block;
-  opacity: 1;
-  transform: scale(1);
+  animation: popoverAppear 0.3s ease forwards;
 }
-
-.card {
+@keyframes popoverAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.speaker-detail-popover .speaker-detail-popover__content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 4px 10px 24px rgba(0, 0, 0, 0.1);
-  padding: 36px 30px;
-  gap: 16px;
-  isolation: isolate;
-  width: 1075px;
-  height: 233px;
-  margin: 0 auto;
-  position: relative;
+  align-items: stretch;
+  width: 100%;
+  min-height: 150px;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: contentAppear 0.3s ease 0.1s forwards;
 }
-.card .profile {
+@keyframes contentAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.speaker-detail-popover .popover__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 200px;
+}
+.speaker-detail-popover .popover__social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+  margin-right: 20px;
+  margin-left: 50px;
+}
+.speaker-detail-popover .social-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
-.card .profile .profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 20px;
-  margin-bottom: -2rem;
+.speaker-detail-popover .social-icon:hover {
+  transform: translateY(-2px);
 }
-.card .profile .profile-info h2 {
-  width: 113px;
+.speaker-detail-popover .social-icon__image {
+  width: 24px;
   height: 24px;
-  margin: 0;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
-  margin-left: 0.2rem;
+  object-fit: contain;
 }
-.card .profile .profile-info p {
+
+.popover__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.popover__name {
+  font-size: 1.2rem;
+  margin: 0 0 5px;
+}
+
+.popover__profession {
   font-size: 1rem;
-  color: #242424;
-  font-weight: bold;
-  width: 210px;
-  height: 18px;
-  margin-top: 0.8rem;
-  margin-left: -0.6rem;
+  margin: 2px 0;
+  font-weight: bolder;
 }
-.card .profile .profile-info p.company {
+
+.popover__company {
+  font-size: 1rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+.divider {
+  width: 2px;
+  background-color: #e0e0e0;
+  margin: 0;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.popover__bio {
+  flex: 1;
   font-size: 0.9rem;
-  font-weight: normal;
-  color: #909090;
-  transform: scale(1);
-  margin-left: -3.9rem;
-  margin-top: 0.2rem;
+  line-height: 1.5;
+  padding-right: 20px;
+  text-align: justify;
 }
-.card .profile .profile-info .social-icons {
-  position: absolute;
-  display: flex;
-  margin-top: 10px;
-  gap: 0.4rem;
-}
-.card .profile .profile-info .social-icons a {
-  margin-right: 10px;
-}
-.card .profile .profile-info .social-icons a img {
-  width: 18px;
-  height: 18px;
-  left: 0px;
-  top: 0px;
-}
-.card .divider {
-  width: 1.2px;
-  height: 160px;
-  background-color: #cbcbcb;
-  margin: 0 20px;
-  margin-left: -0.5rem;
-}
-.card .description {
-  width: 60%;
-}
-.card .description p {
-  color: #000000;
-  width: 650px;
-  font-family: "Lora", serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 24px;
-  margin-left: -1rem;
-  text-align: left;
-  margin-top: 1rem;
-}
-.card .close-btn {
+
+.speaker-detail-popover__close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 14px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: #373737;
-  font-weight: bold;
-}
-.card .close-btn:hover {
-  color: #7a7a7a;
+  padding: 5px 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .speakers__title {
-    font-size: 1.8rem;
-  }
-  .speakers__slider {
-    gap: 0.5rem;
-    padding: 1rem;
-  }
-  .speaker-card {
-    width: 8rem;
-    height: 20rem;
-  }
-  .speaker-detail-popover .card {
-    padding: 1rem;
-    display: grid;
-    width: 26rem;
-    height: 10rem;
-    margin-bottom: 10rem;
-  }
-  .divider {
-    display: none;
-  }
-  .description {
-    display: none;
-  }
-  .speaker-detail-popover .profile {
-    width: 10rem;
-    height: 2rem;
-  }
-  .profile-img {
-    height: 1rem;
-    margin-top: 2rem;
-  }
-  .text {
-    margin-top: 1rem;
-  }
-}
-@media (max-width: 480px) {
-  .speakers__title {
-    font-size: 1.5rem;
-  }
-  .speakers__subtitle {
-    font-size: 1rem;
-  }
-  .speaker-card {
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-  }
-  .speaker-detail-popover .card {
-    width: 100%;
-    padding: 16px;
-  }
-  .speaker-detail-popover .profile-info h2 {
-    font-size: 1.5rem;
-  }
-  .speaker-detail-popover .description p {
-    font-size: 0.9rem;
-  }
-}
 .speaker-slider {
   display: flex;
   overflow-x: auto;
@@ -288,11 +240,11 @@ header p {
 }
 
 .left-btn {
-  left: 80px;
+  left: 100px;
 }
 
 .right-btn {
-  right: 80px;
+  right: 100px;
 }
 
 .slider-btn:hover {
@@ -330,7 +282,7 @@ header p {
     flex-direction: column;
   }
 }
-button {
+#stp {
   color: white;
   background-color: #003FB4;
   width: 20%;
@@ -339,8 +291,9 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
 }
-button:hover {
+#stp:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

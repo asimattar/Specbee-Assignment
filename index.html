@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Featured Speakers !!</title>
     <link rel="stylesheet" href="styles.css">
     <script src="index.js" defer></script>
 
@@ -13,49 +13,38 @@
         <p>Speakers are core contributors and industry thought leaders working at <a href="index.html" style="text-decoration:none;">companies</a> in that push for innovation.</p>
     </header>
 
-    <div
-        class="speaker-detail-popover"
-        id="speakerDetailPopover"
-        aria-hidden="true"
-      >
-        <div class="card">
-          <div class="profile">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Profile Picture"
-              class="profile-img speaker-detail-popover__image"
-            />
-            <div class="profile-info">
-              <h2 class="speaker-detail-popover__name">John Doe</h2>
-              <p class="speaker-detail-popover__position">
-                Chief Marketing Officer
-              </p>
-              <p class="company speaker-detail-popover__company">Specbee</p>
-              <div class="social-icons">
-                <a href="#"><img src="Assets/social1.png" alt="Icon 1" /></a>
-                <a href="#"><img src="Assets/social2.png" alt="Icon 2" /></a>
-                <a href="#"><img src="Assets/social3.png" alt="Icon 3" /></a>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="description">
-            <p class="speaker-detail-popover__description"></p>
-          </div>
-          <div
-            class="close-btn"
-            id="popoverCloseButton"
-            onclick="closePopover()"
-          >
-            ✕
+    <div class="speaker-detail-popover" id="speaker-popup" aria-hidden="true">
+      <button class="speaker-detail-popover__close-button" aria-label="Close">&times;</button>
+      <div class="speaker-detail-popover__content">
+        <img src="" alt="Speaker Photo" class="popover__image">
+        <div class="popover__details">
+          <h2 class="popover__name">John Doe</h2>
+          <p class="popover__profession">Chief Marketing Officer</p>
+          <p class="popover__company">Specbee</p>
+          <div class="popover__social-icons">
+            <a href="#" class="social-icon" data-platform="tinder" target="_blank" rel="noopener noreferrer" aria-label="Visit Tinder Profile">
+              <img src="Assets/social1.png" alt="Tinder" class="social-icon__image">
+            </a>
+            <a href="#" class="social-icon" data-platform="twitter" target="_blank" rel="noopener noreferrer" aria-label="Visit Twitter Profile">
+              <img src="Assets/social2.png" alt="Twitter" class="social-icon__image">
+            </a>
+            <a href="#" class="social-icon" data-platform="linkedin" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn Profile">
+              <img src="Assets/social3.png" alt="LinkedIn" class="social-icon__image">
+            </a>
           </div>
         </div>
+        <div class="divider"></div>
+        <div class="popover__bio">
+          <p>Monotonectally synergize business communities rather than client-centric convergence...</p>
+        </div>
       </div>
+    </div>
 
+    <div class="slider-section">
     <button class="slider-btn left-btn" id="left-btn">&lt;</button>
     <section class="slider-container">
       <div class="speaker-slider">
-        <article class="speaker-slider__card"  data-speaker-id="1" onclick="showPopover(this)">
+        <article class="speaker-slider__card" id="speaker-1">
           <div class="speaker-slider__image-container">
             <img class="speaker-slider__image" src="Assets/Speaker 1.png" alt="Photo of Speaker 1">
           </div>
@@ -64,25 +53,25 @@
           <p class="speaker-slider__company" style="color: gray;">Acme Corp.</p>
         </article>
 
-        <article class="speaker-slider__card"  data-speaker-id="2" onclick="showPopover(this)">
+        <article class="speaker-slider__card" id="speaker-1">
           <div class="speaker-slider__image-container">
             <img class="speaker-slider__image" src="Assets/Speaker 2.png" alt="Photo of Speaker 2">
           </div>
-            <h3 class="speaker-slider__name">Alice Holland</h3>
+            <h3 class="speaker-slider__name">Alex Holland</h3>
             <p class="speaker-slider__profession" >Chief Engagement Officer</p>
             <p class="speaker-slider__company" style="color: gray;">Acquia</p>
         </article>
 
-        <article class="speaker-slider__card"  data-speaker-id="3" onclick="showPopover(this)">
+        <article class="speaker-slider__card" id="speaker-1">
           <div class="speaker-slider__image-container">
             <img class="speaker-slider__image" src="Assets/Speaker 3.png" alt="Photo of Speaker 3">
           </div>
-            <h3 class="speaker-slider__name">Diana Burnwood</h3>
+            <h3 class="speaker-slider__name">Danny Burnwood</h3>
             <p class="speaker-slider__profession">Chief Technical Developer</p>
             <p class="speaker-slider__company" style="color: gray;">Pantheon</p>
         </article>
 
-        <article class="speaker-slider__card"  data-speaker-id="4" onclick="showPopover(this)">
+        <article class="speaker-slider__card" id="speaker-1">
           <div class="speaker-slider__image-container">
             <img class="speaker-slider__image" src="Assets/Speaker 4.png" alt="Photo of Speaker 4">
           </div>
@@ -93,7 +82,8 @@
       </div>
     </section>
     <button class="slider-btn right-btn" id="right-btn">&gt;</button>
-      
-      <button class="speaker-detail__stp">See the Program</button>
+  </div>
+    
+      <button id="stp" title="Click here to see the full program">See the Program</button>
 </body>
 </html>
